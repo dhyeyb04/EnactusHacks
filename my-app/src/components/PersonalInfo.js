@@ -1,20 +1,15 @@
 import React from 'react';
 import { Grid, GridColumn as Column } from '@progress/kendo-react-grid';
-import { gridData } from '../data/appData';
+import { personData } from '../data/appData';
 
-const processData = (data) => {
-  data.forEach((item) => {
-    count++;
-  })
-}
-
-export const GridContainer = () => (
+export const PersonalInfo = () => (
   <div>
-    <Grid style={{ height: '295px' }} data={gridData}>
+    <Grid style={{ height: '300' }} data={personData}>
       <Column field="PatientFirstName" title="First Name" width="200px" />
       <Column field="PatientLastName" title="Last Name" width="200px" />
       <Column field="Severity" title="Severity" width="200px" />
       <Column field="Reason" title="Reason for Visit" width="200px" />
+      <Column field="LastVisit" title="Last Visit" width="200px" />
     </Grid>
   </div>
 );

@@ -1,5 +1,11 @@
 export const gridData = [
   {
+    "PatientFirstName": "Jai",
+    "PatientLastName": "Metha",
+    "Severity": 1,
+    "Reason": "Corona",
+  },
+  {
     "PatientFirstName": "Dhyey",
     "PatientLastName": "Bhavsar",
     "Severity": 2,
@@ -8,19 +14,28 @@ export const gridData = [
   {
     "PatientFirstName": "Harsh",
     "PatientLastName": "Patel",
-    "Severity": 2,
+    "Severity": 3,
     "Reason": "Flu",
   },
   {
     "PatientFirstName": "Guha",
     "PatientLastName": "Ganesh",
-    "Severity": 2,
+    "Severity": 4,
     "Reason": "Flu",
   },
+  {
+    "PatientFirstName": "Nikhil",
+    "PatientLastName": "Sivapuram",
+    "Severity": 5,
+    "Reason": "Lil' Bitch",
+  }
+];
+
+export const personData = [
   {
     "PatientFirstName": "Jai",
     "PatientLastName": "Metha",
     "Severity": 1,
     "Reason": "Corona",
-  }
+  },
 ];

@@ -6,8 +6,10 @@ import { Input } from '@progress/kendo-react-inputs';
 import { Button } from '@progress/kendo-react-buttons';
 import { Ripple } from '@progress/kendo-react-ripple';
 import { savePDF } from '@progress/kendo-react-pdf';
+import { Card, CardHeader, CardTitle, CardBody, CardActions, CardImage, CardSubtitle, Avatar } from '@progress/kendo-react-layout';
 
 import { GridContainer } from './components/GridContainer';
+import { PersonalInfo } from './components/PersonalInfo';
 //import { PanelBarContainer } from './components/PanelBarContainer';
 
 import '@progress/kendo-theme-material/dist/all.css';
@@ -47,7 +49,7 @@ class App extends Component {
             <div className="row">
               <div className="col-xs-6 col-sm-6 col-md-2 col-lg-2 col-xl-2">
                 <div className="patients-container">
-                  <span className="patients-number">4</span>
+                  <span className="patients-number" id="num">4</span>
                   <p>Upcoming Appointments</p>
                 </div>
                 <div className="patients-container">
@@ -59,7 +61,11 @@ class App extends Component {
                 <GridContainer />
               </div>
             </div>
-
+            <div className="row">
+              <div className="patient-personal">
+                <PersonalInfo />
+              </div>
+            </div>
             {this.state.showDialog &&
               <Dialog title={"Share this report"} onClose={this.handleShare}>
                 <p>Please enter the email address/es of the recipient/s.</p>
