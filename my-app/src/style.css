@@ -1,0 +1,42 @@
+table {
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: 50 em;
+    text-align:center;
+    border-collapse:collapse;
+}
+td {
+    padding:5px;
+}
+thead {
+    padding:5px;
+    color:white;
+    background-color:mediumpurple;
+}
+tr{
+ font-weight: 800;
+}
+tr:nth-child(even) {
+    background: #e5e5e5
+}
+
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #696969;
+    text-align: right;
+}
+
+div{
+    text-align: center;
+}
+
+input[type = image]{
+    position: fixed;
+	bottom: 0;
+	left: 0;
+}
+
+p {text-align:bottom;}

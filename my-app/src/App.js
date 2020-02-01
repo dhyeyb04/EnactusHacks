@@ -8,28 +8,27 @@ import { Ripple } from '@progress/kendo-react-ripple';
 import { savePDF } from '@progress/kendo-react-pdf';
 import { Card, CardHeader, CardTitle, CardBody, CardActions, CardImage, CardSubtitle, Avatar } from '@progress/kendo-react-layout';
 
-//import { GridContainer } from './components/GridContainer';
-//import { PersonalInfo } from './components/PersonalInfo';
+import { GridContainer } from './components/GridContainer';
+import { PersonalInfo } from './components/PersonalInfo';
 //import { PanelBarContainer } from './components/PanelBarContainer';
 
 import '@progress/kendo-theme-material/dist/all.css';
 import './App.css';
 import 'bootstrap-4-grid/css/grid.min.css';
 
-import people from './people.json';
 import { Grid, GridColumn as Column } from '@progress/kendo-react-grid';
 import { gridData } from './data/appData';
-let count;
 
-const processData = (data) => {
-  data.forEach((item) => {
-    count++;
-  })
-}
+function ngOnInit() {
+    let allPatients = this.http.get('https://se3316-hpate45-lab5-harshbuddy.c9users.io:8081/api/dashboard');
+    allPatients.subscribe((response) => {
+      this.response = response;
+    })
+ };
 
 class App extends Component {
   state = {
-    data: people,
+    data: gridData,
     selectedID: null
   }
   constructor(props) {
@@ -47,6 +46,7 @@ class App extends Component {
       showDialog: !this.state.showDialog
     }, () => console.log(this.state))
   }
+
   render() {
     return (
       <Ripple>
@@ -73,7 +73,9 @@ class App extends Component {
                 </div>
               </div>
               <div className="patients-list">
-                <Grid style={{ height: '295px' }} data={gridData}>
+                  <Grid style={{ height: '295px' }} data={this.state.data.map((item) => ({...item, selected: item.ProductId === this.state.selectedID}))}selectedField="selected" onRowClick={(e) => {
+                        this.setState({ selectedID: e.dataItem.ProductID });
+                    }}>
                   <Column field="PatientFirstName" title="First Name" width="200px" />
                   <Column field="PatientLastName" title="Last Name" width="200px" />
                   <Column field="Severity" title="Severity" width="200px" />
@@ -81,19 +83,7 @@ class App extends Component {
                 </Grid>
               </div>
             </div>
-            <div className="row">
-              <div className="patient-personal">
-                <Grid style={{ height: '300px' }} data={this.state.data.map((item) => ({ ...item, selected: item.ProductID === this.state.selectedID }))}
-                    selectedField="selected"
-                    onRowClick={(e) => {this.setState({ selectedID: e.dataItem.ProductID });}}>
 
-                  <Column field="PatientFirstName" title="First Name" width="200px" />
-                  <Column field="PatientLastName" title="Last Name" width="200px" />
-                  <Column field="Severity" title="Severity" width="200px" />
-                  <Column field="Reason" title="Reason for Visit" width="200px" />
-                </Grid>
-              </div>
-            </div>
             {this.state.showDialog &&
               <Dialog title={"Share this report"} onClose={this.handleShare}>
                 <p>Please enter the email address/es of the recipient/s.</p>

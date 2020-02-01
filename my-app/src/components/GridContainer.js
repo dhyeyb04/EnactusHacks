@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, GridColumn as Column } from '@progress/kendo-react-grid';
 import { gridData } from '../data/appData';
+var count;
 
 const processData = (data) => {
   data.forEach((item) => {
